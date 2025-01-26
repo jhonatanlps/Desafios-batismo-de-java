@@ -7,8 +7,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         int limite = 4;
-        Ninja Ninja = new Ninja();
-        Uchiha NinjaUchiha = new Uchiha();
         Ninja[] listaNinja = new Ninja[limite];
         Uchiha[] listaUchiha = new Uchiha[limite];
         int opcao = 0;
@@ -31,8 +29,9 @@ public class Main {
                     System.out.println("\n===== Adicionar novos ninjas =====");
                     System.out.println("\nSeu ninja será uchiha? ");
                     String simOuNao = scanner.nextLine();
-                    if (simOuNao.equals("Sim")) {
-                        if (contagemUchiha < 3) {
+                    if (simOuNao.equals("SIM")) {
+                        if (contagemUchiha < 4) {
+                            Uchiha NinjaUchiha = new Uchiha();
                             System.out.println("Qual nome do seu ninja? ");
                             NinjaUchiha.nome = scanner.nextLine();
                             System.out.println("Qual a idade do seu ninja? ");
@@ -52,7 +51,8 @@ public class Main {
                             System.out.println("Limite de ninjas atingidos");
                         }
                     } else {
-                        if (contagemNinja < 3) {
+                        if (contagemNinja < 4) {
+                            Ninja Ninja = new Ninja();
                             System.out.println("Qual nome do seu ninja? ");
                             Ninja.nome = scanner.nextLine();
                             System.out.println("Qual a idade do seu ninja? ");
@@ -101,9 +101,13 @@ public class Main {
                         System.out.println("Qual é o ninja que você quer atualizar a habilidade especial");
                         int ninjaAtualizar = scanner.nextInt();
                         scanner.nextLine();
-                        System.out.println("Qual é a nova habilidade especial dele? ");
-                        listaUchiha[ninjaAtualizar].habilidadeEspecial = scanner.nextLine();
-                        System.out.println("Atualização feita!!");
+                        if (ninjaAtualizar < 0 || ninjaAtualizar > contagemUchiha) {
+                            System.out.println("Esse ninja não existe");
+                        } else {
+                            System.out.println("Qual é a nova habilidade especial dele? ");
+                            listaUchiha[ninjaAtualizar].habilidadeEspecial = scanner.nextLine();
+                            System.out.println("Atualização feita!!");
+                        }
                     }
                     break;
 
